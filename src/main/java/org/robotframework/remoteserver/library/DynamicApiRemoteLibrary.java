@@ -16,6 +16,7 @@ package org.robotframework.remoteserver.library;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -26,14 +27,18 @@ public class DynamicApiRemoteLibrary implements RemoteLibrary {
     private Method runKeyword;
     private Method getKeywordArguments;
     private Method getKeywordDocumentation;
+    private Method getKeywordTags;
+    private Method getKeywordTypes;
 
     protected DynamicApiRemoteLibrary(Object library, Method getKeywordNames, Method runKeyword,
-            Method getKeywordArguments, Method getKeywordDocumentation) {
+            Method getKeywordArguments, Method getKeywordDocumentation, Method getKeywordTags, Method getKeywordTypes) {
         this.library = library;
         this.getKeywordNames = getKeywordNames;
         this.runKeyword = runKeyword;
         this.getKeywordArguments = getKeywordArguments;
         this.getKeywordDocumentation = getKeywordDocumentation;
+        this.getKeywordTags = getKeywordTags;
+        this.getKeywordTypes = getKeywordTypes;
     }
 
     @Override
@@ -90,6 +95,28 @@ public class DynamicApiRemoteLibrary implements RemoteLibrary {
             return "";
         try {
             return (String) getKeywordDocumentation.invoke(library, keyword);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public List<String> getKeywordTags(String keyword) {
+        if (getKeywordTags == null)
+            return new ArrayList<>();
+        try {
+            return (List<String>) getKeywordTags.invoke(library, keyword);
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public List<String> getKeywordTypes(String keyword) {
+        if (getKeywordTypes == null)
+            return new ArrayList<>();
+        try {
+            return (List<String>) getKeywordTypes.invoke(library, keyword);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e);
         }

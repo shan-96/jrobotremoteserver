@@ -24,7 +24,7 @@ public class DynamicApiRemoteLibraryTest {
         Method gkn = DynamicOneRunKeywordNoKwargs.class.getMethod("getKeywordNames");
         Method rk = DynamicOneRunKeywordNoKwargs.class.getMethod("runKeyword", new Class<?>[] { String.class,
                 List.class });
-        DynamicApiRemoteLibrary wrapper = new DynamicApiRemoteLibrary(lib, gkn, rk, null, null);
+        DynamicApiRemoteLibrary wrapper = new DynamicApiRemoteLibrary(lib, gkn, rk, null, null, null, null);
         assertEquals(wrapper.getImplementation(), lib);
     }
 
@@ -34,7 +34,7 @@ public class DynamicApiRemoteLibraryTest {
         Method gkn = DynamicUsingLists.class.getMethod("getKeywordNames");
         Method rk = DynamicUsingLists.class.getMethod("runKeyword", new Class<?>[] { String.class, List.class });
         Method gka = DynamicUsingLists.class.getMethod("getKeywordArguments", new Class<?>[] { String.class });
-        DynamicApiRemoteLibrary wrapper = new DynamicApiRemoteLibrary(lib, gkn, rk, gka, null);
+        DynamicApiRemoteLibrary wrapper = new DynamicApiRemoteLibrary(lib, gkn, rk, gka, null, null, null);
         Assert.assertEquals(wrapper.getKeywordNames(), Arrays.asList("go"));
         Assert.assertEquals(wrapper.runKeyword("go", Arrays.asList("there"), noKwargs), "there");
         Assert.assertEquals(wrapper.getKeywordArguments("go"), Arrays.asList("where"));

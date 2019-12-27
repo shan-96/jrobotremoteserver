@@ -69,6 +69,24 @@ public interface RemoteLibrary {
     public String getKeywordDocumentation(String name);
 
     /**
+     * Gets the list of tags for the given keyword name.
+     *
+     * @param name
+     *            name of the keyword to get list of tags for
+     * @return keyword list of tags
+     */
+    public List<String> getKeywordTags(String name);
+
+    /**
+     * Gets the list of argument types for the given keyword name.
+     *
+     * @param name
+     *            name of the keyword to get argument types for
+     * @return keyword argument types list
+     */
+    public List<String> getKeywordTypes(String name);
+
+    /**
      * Gets the name of the remote library.
      *
      * @return The name of the remote library, which is the same as the class
