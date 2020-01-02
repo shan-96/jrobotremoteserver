@@ -14,10 +14,7 @@
  */
 package org.robotframework.remoteserver.servlet;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -189,6 +186,16 @@ public class ServerMethods {
             log.warn("", e);
             throw new RuntimeException(e);
         }
+    }
+
+    public List<String> get_keyword_tags(String keyword) {
+        List<String> tags = servlet.getLibrary().getKeywordTags(keyword);
+        return tags == null ? new ArrayList<String>() : tags;
+    }
+
+    public List<String> get_keyword_types(String keyword) {
+        List<String> types = servlet.getLibrary().getKeywordTypes(keyword);
+        return types == null ? new ArrayList<String>() : types;
     }
 
     /**

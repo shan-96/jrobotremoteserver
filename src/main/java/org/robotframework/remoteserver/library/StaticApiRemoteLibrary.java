@@ -14,6 +14,7 @@
  */
 package org.robotframework.remoteserver.library;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +51,16 @@ public class StaticApiRemoteLibrary implements RemoteLibrary {
     @Override
     public String getKeywordDocumentation(String keyword) {
         return "";
+    }
+
+    @Override
+    public List<String> getKeywordTags(String keyword) {
+        return new ArrayList<String>();
+    }
+
+    @Override
+    public List<String> getKeywordTypes(String keyword) {
+        return new ArrayList<String>();
     }
 
     @Override
