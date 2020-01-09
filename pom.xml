@@ -22,6 +22,10 @@
 			<name>David Luu</name>
 			<email>mangaroo@gmail.com</email>
 		</developer>
+		<developer>
+			<name>Shantanu Patil</name>
+			<email>shantanumh18ab3632@gmail.com</email>
+		</developer>
 	</developers>
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -40,7 +44,7 @@
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-servlet</artifactId>
-			<version>9.4.25.v20191220</version>
+			<version>9.3.26.v20190403</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
